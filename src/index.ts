@@ -49,7 +49,7 @@ const plugin: PluginCreator<plugin.Options> = (opts = {}) => {
           if (node.type !== 'function' || node.value !== 'src') return;
 
           // If a `src()` contains something other than a quoted string (such as
-          // a `var()`) it's not something
+          // a `var()`) it's not something we can convert to a valid `url()`.
           const first = node.nodes[0];
           if (first?.type !== 'string') {
             if (opts.allowNativeSrc) return;
@@ -74,6 +74,7 @@ const plugin: PluginCreator<plugin.Options> = (opts = {}) => {
             node.value = 'url';
           } else {
             node.value = 'url';
+            // Remove quotes by changing the type to `word`.
             node.nodes = [{...first, type: 'word'}];
           }
         });
