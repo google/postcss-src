@@ -1,0 +1,51 @@
+{
+  "name": "postcss-src",
+  "version": "1.0.0",
+  "description": "A PostCSS polyfill for the CSS src() function.",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin"
+  ],
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "test": "jest",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
+  },
+  "license": "Apache-2.0",
+  "repository": "https://github.com/google/postcss-src",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^12.12.7",
+    "babel-jest": "^27.5.1",
+    "gts": "^4.0.0",
+    "jest": "^27.0.4",
+    "jest-cli": "^27.0.4",
+    "postcss": "^8.2.6",
+    "ts-jest": "^27.0.3",
+    "typescript": "^3.8.0"
+  },
+  "peerDependencies": {
+    "postcss": "^8.2.6"
+  },
+  "engines": {
+    "node": ">=8.3.0"
+  },
+  "dependencies": {
+    "postcss-cli": "^10.0.0",
+    "postcss-value-parser": "^4.2.0"
+  }
+}
