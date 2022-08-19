@@ -27,6 +27,7 @@
   ],
   "exclude": [
     "build/",
+    "test/",
     "jest.config.js",
     "prettier.config.js"
   ]
