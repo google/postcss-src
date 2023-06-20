@@ -58,7 +58,7 @@ body {
 Add `postcss-src` to your project:
 
 ```sh
-npm install postcss-custom-properties --save-dev
+npm install postcss-src --save-dev
 ```
 
 Use `postcss-src` as a PostCSS plugin:
