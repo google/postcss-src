@@ -1,6 +1,6 @@
 {
   "name": "postcss-src",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A PostCSS polyfill for the CSS src() function.",
   "keywords": [
     "postcss",
@@ -45,7 +45,6 @@
     "node": ">=8.3.0"
   },
   "dependencies": {
-    "postcss-cli": "^10.0.0",
     "postcss-value-parser": "^4.2.0"
   }
 }
