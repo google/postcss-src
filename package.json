@@ -37,7 +37,7 @@
     "postcss": "^8.2.6",
     "ts-jest": "^29.1.0",
     "typescript": "^5.1.3",
-    "jest-environment-jsdom": "^29.5.0"
+    "jest-environment-jsdom": "^30.5.2"
   },
   "peerDependencies": {
     "postcss": "^8.2.6"
