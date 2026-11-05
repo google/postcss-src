@@ -6,22 +6,39 @@ on:
   pull_request:
     branches: [main]
 
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-test-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: ['lts/-2', 'lts/-1', 'lts/*']
 
     steps:
-      # actions/checkout@v3.0.2
-      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: {persist-credentials: false}
       - name: Use Node.js ${{ matrix.node-version }}
-        # actions/setup-node@v3.4.1
-        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run compile
       - run: npm run test
+
+  analyze_ci:
+    name: Static analysis (GitHub Actions)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with: {persist-credentials: false}
+    - uses: zizmorcore/zizmor-action@3dc1ecc9bcb9e94e9b2c709687979e1298497054 # v0.6.2
+      with:
+        persona: pedantic
+        advanced-security: false # Fail the GitHub action if Zizmor has findings
